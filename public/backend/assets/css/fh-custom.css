@@ -1,0 +1,182 @@
+ul,ol{list-style:none;}
+a{text-decoration:none;color:#5c5c5c;}
+
+.title-small{color:#5c5c5c}
+.sidebar input {
+	margin-right: 5px;
+}
+.card-body ul li ul {
+	padding-left: 30px;
+}
+.card-body ul  {
+	padding: 0;
+}
+.card-body ul li{margin:0 0 10px 0}
+
+.rh .display-inline{display:inline-block;}
+.rh .mr-15{margin-right:15px;}
+.rh .mb-20{margin-bottom:15px;}
+.rh .mt-15{margin-top:15px;}
+.rh .title-default{font-size: 18px;}
+.rh-btn {
+
+	padding: 5px 10px;
+    border-radius: 3px;
+
+}
+
+.rh-links {margin-bottom: 15px;}
+.rh-links ul{list-style: none;padding: 0;}
+.rh-links ul li {display: inline-block;}
+.rh-links ul li a{color:#0f9cf3}
+.active{color:#000!important}
+
+.rh-select-wrap {
+	float: left;
+	width: 60%;
+}
+.rh-bttn-wrap {
+	width: 35%;
+	float: left;
+	margin-left: 5%;
+}
+.rh-bttn-wrap .btn-primary {
+	color: #000;
+	background-color: transparent;
+	border-color: #000;
+    padding:7px;
+
+}
+
+
+.texteditor{padding: 30px 0;}
+
+.card-foot--left{width:65%;float:left}
+.card-foot--right{width:35%;float:left}
+
+
+.bootstrap-tagsinput .tag {
+	margin-right: 2px;
+	color: #2F84EA;
+    font-weight: 700;
+
+}
+
+
+.bootstrap-tagsinput {
+	width: 100%;
+}
+.bootstrap-tagsinput .tag {
+	color: #fff;
+	background: #2F84EA;
+	padding: 0 5px;
+	border-radius: 5px;
+}
+
+
+.rh-card {
+	padding: 20px 15px;
+	margin-bottom: 15px;
+	box-shadow: 3px 10px 15px 2px rgba(125, 147, 178, 0.24);
+}
+
+
+.invalid-feedback {
+	display: block;
+
+}
+
+.image-resize-backend{width:300px;height:80px;object-fit: contain;}
+
+
+
+
+/* post */
+.pagination {
+	align-items: center;
+	justify-content: center;
+}
+
+
+/* media */
+.image-block-wrapper{margin-left:-1%;}
+.image-block {
+	width: 8%;
+	height: 120px;
+	margin-left: 1%;
+	float: left;
+	margin-bottom: 1%;
+}
+.image-block:hover {
+	border: 1px solid #ddd;
+	cursor: pointer;
+}
+.modal-header{box-shadow: 0px 8px 15px 0px rgba(125, 147, 178, 0.24)};
+.image-block-large{width: 100%;height: 800px;box-shadow: 0px 8px 15px 0px rgba(125, 147, 178, 0.24)}
+.image-block-large img{width: 100%;height: 780px; object-fit: contain;}
+.image-sidebar {
+	height: 100%;
+	width: 100%;
+	box-shadow: 0px 8px 15px 0px rgba(125, 147, 178, 0.24);
+	padding: 30px;
+}
+.image-sidebar ul {
+	padding:0;
+}
+
+
+/* Project File design by fahmid  */
+
+.fh-list {
+    width: 100%;
+    background: #E9EFEC;
+    padding: 20px;
+    position: relative;
+    border-left: 10px solid #16423C;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border-top: 1px solid #C4DAD2;
+    border-right: 1px solid #C4DAD2;
+    border-bottom: 1px solid #C4DAD2;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.fh-list:hover{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.fh-item-content {
+    width: 80%;
+    float: left;
+}
+
+.fh-item-width {
+    float: left;
+    width: 20%;
+}
+.title-small {
+    font-size: 18px;
+    line-height: 26px;
+    color: #161616;
+    font-weight: 500;
+}
+.fh-list .title-small{
+	display: block;
+	margin-top: 5px;
+}
+
+@media (max-width: 992px) {
+    .fh-list .fh-item-content{
+        float: none;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 10px;
+    }
+	.fh-list .fh-item-width {
+		float: none;
+		width: 100%;
+		text-align: center;
+	}
+}
