@@ -90,55 +90,44 @@ class OrgFileController extends Controller
     public function edit($id)
     {
         //
-        $org_files = OrgFile::with('orgProjects')->findOrFail($id);
-        $projectName = $org_files->orgProjects->first()->name ?? 'No Project Found';
-        $projectid = $org_files->orgProjects->first()->id ?? 'No Project id Found';
+        $orgFile = OrgFile::with('orgProjects')->findOrFail($id);
+        $projectName = $orgFile->orgProjects->first()->name ?? 'No Project Found';
+        $projectid = $orgFile->orgProjects->first()->id ?? 'No Project id Found';
         // dd( $org_files);
         $projects = Project::get()->all();
-        return view('backend.projectfiles.edit',compact('org_files','projects','projectName','projectid'));
+        return view('backend.projectfiles.edit',compact('orgFile','projects','projectName','projectid'));
         
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, OrgFile $orgFile)
+    public function update(Request $request, OrgFile $orgFile,$id)
     {
         //
-        // dd($request);
-        $projectId = $request->project_id;
+        $org_files = OrgFile::with('orgProjects')->findOrFail($id);
+        // dd($orgFile);
         $file = $request->file('file_name');
-        $customFileNames = $request->custom_file_name;
+        $customFileName = $request->custom_file_name;
 
 
-            // Use custom file name if provided; otherwise, default to original name
-            $customName = $customFileNames;
-            $orgFile->name = $customName;
-            $orgFile->custom_name = $customName;
+        // Use custom file name if provided; otherwise, default to original name
+        $org_files->name = $customFileName;
+        $org_files->custom_name = $customFileName;
 
-            $data = new OrgFile();
-            // Update file
-            if ($file) {
-                $fileNameGen = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('upload/project-file/'), $fileNameGen);
-                $data->file_name = 'upload/project-file/' . $fileNameGen;
-            }
-
-            $orgFile->updated_at = Carbon::now();
-            $orgFile->save();
-
-            // Sync project ID
-            // if ($projectId) {
-            //     $orgFile->orgProjects()->sync($projectId);
-            // }
-        if (!$orgFile->orgProjects()->where('project_id', $projectId)->exists()) {
-            $orgFile->orgProjects()->sync([$projectId]);
+        // Update file
+        if ($file) {
+            $fileNameGen = hexdec(uniqid()) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('upload/project-file/'), $fileNameGen);
+            $org_files->file_name = 'upload/project-file/' . $fileNameGen;
         }
 
+        $org_files->updated_at = Carbon::now();
+        $org_files->save();
 
 
         $notification = array(
-            'message' => 'Project File Updated Successfully',
+            'message' => 'File Updated Successfully',
             'alert-type' => 'success'
         );
 

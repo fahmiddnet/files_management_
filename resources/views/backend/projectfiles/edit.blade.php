@@ -9,26 +9,25 @@
         <div class="row">
             <div class="col-xl-4">
                 <div class="page-title-box">
-                    <h4 class="title-default display-inline mr-15">Add New Project File</h4>
+                    <h4 class="title-default display-inline mr-15">Edit Project File</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
-        <form action="{{ route('projectfiles.update',$org_files->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('projectfiles.update',$orgFile->id) }}" method="POST" enctype="multipart/form-data">
             @csrf @method('PUT')
         <div class="row">
             <div class="col-lg-9 col-xl-9">
                 <div class="card">
                     <div class="card-body">
-                        <div class="mb-3">
-                            <label for="org">Project</label>
-                            <select name="project_id" id="org" class="form-control mb-3" aria-label="Large select example">
-                                <option value="{{$projectid}}" selected>{{$projectName}}</option>
-                                @foreach ($projects as $project)
-                                    <option value="{{$project->id}}">{{$project->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <fieldset disabled>
+                            <div class="mb-3">
+                                <label for="org">Project</label>
+                                <select name="project_id" id="org" class="form-control mb-3" aria-label="Large select example">
+                                    <option value="{{$projectid}}" selected>{{$projectName}}</option>
+                                </select>
+                            </div>
+                        </fieldset>
                     </div>
                 </div>
                 <div class="card">
@@ -53,19 +52,17 @@
                                             <div class="col-sm-12 mb-3">
                                                 <div class="col-sm-12 mb-2">
                                                     <label class="col-form-label">File name</label>
-                                                    <input value="{{$org_files->custom_name}}" name="custom_file_name" class="form-control" type="text" placeholder="File name">
+                                                    <input value="{{$orgFile->custom_name}}" name="custom_file_name" class="form-control" type="text" placeholder="File name">
                                                     @error('custom_file_name')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <input value="{{$org_files->file_name}}" name="file_name" class="form-control" type="file">
-                                                    <span>{{$org_files->file_name}}</span>
+                                                    <input name="file_name" class="form-control" type="file">
+                                                    <span>{{basename($orgFile->file_name)}}</span>
                                                 </div>
                                                 <hr>
                                             </div>
-                                            <div class="col-sm-12 mb-3" id="file_added"></div>
-                                            <a id="append_file" class="btn btn-sm btn-primary btn-primary waves-effect waves-light">Add file</a>
                                         </div>
                                     </div>
 
@@ -108,7 +105,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-foot" style="">
-                                        <button type="submit" class="btn btn-sm btn-primary btn-primary waves-effect waves-light">Submit</button>
+                                        <button type="submit" class="btn btn-sm btn-primary btn-primary waves-effect waves-light">Update</button>
+                                        <a href="{{ route('projectfiles.index') }}" class="btn btn-danger btn-sm">Cancle</a>
                                     </div>
                                 </div>
                             </div>
@@ -179,29 +177,7 @@
         $('.select2').select2();
     });
 </script>
-<script>
-    var html = `<div class="mb-3" id="append_item">
-                    <div class="col-sm-12 mb-2">
-                        <div class="d-flex justify-content-between mb-2">
-                            <label class="col-form-label">File name</label>
-                            <a id="remove_file" class="rounded btn btn-sm btn-danger mb-1" style="font-size:15px"><i class="ri-close-fill"></i></a>
-                        </div>
-                        <input name="custom_file_name[]" class="form-control" type="text" placeholder="File name">
-                    </div>
-                    <div class="col-sm-12">
-                        <input name="file_name[]" class="form-control" type="file">
-                    </div>
-                    <hr>
-                </div>`;
-        $('#append_file').on('click', function(e){
-            e.preventDefault();
-            $("#file_added").append(html);
-        });
-        // Event delegation for dynamically added remove buttons
-        $('#file_added').on('click', '#remove_file', function(e) {
-            $(this).closest('#append_item').remove(); // Remove the parent div of the clicked button
-        });
-</script>
+
 <script>
     
 </script>

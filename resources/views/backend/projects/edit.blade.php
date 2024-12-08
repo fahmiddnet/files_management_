@@ -71,6 +71,7 @@
                                     </div>
                                     <div class="card-foot" style="">
                                         <button type="submit" class="btn btn-sm btn-primary btn-primary waves-effect waves-light">Submit</button>
+                                        <a href="{{ route('projects.index') }}" class="btn btn-danger btn-sm">Cancle</a>
                                     </div>
                                 </div>
                             </div>

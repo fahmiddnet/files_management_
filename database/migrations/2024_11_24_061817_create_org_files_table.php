@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('org_files', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('custom_name')->nullable();
+            $table->text('name')->nullable();
+            $table->text('custom_name')->nullable();
             $table->longText('file_name')->nullable();
             $table->bigInteger('download')->nullable();
             $table->integer('created_by')->nullable();
